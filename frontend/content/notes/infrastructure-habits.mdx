@@ -1,0 +1,22 @@
+---
+title: "Infrastructure habits that save you at 3 AM"
+date: "2025-12-08"
+description: "Boring infrastructure practices compound. A short list of habits that make the difference between a minor incident and a long night."
+tags: ["infrastructure", "operations"]
+---
+
+Most infrastructure failures are boring. A disk fills up. A certificate expires. A dependency that everyone forgot about goes down. The difference between a minor incident and a long night is rarely the technology. It is the habits.
+
+## The short list
+
+**Everything restarts cleanly.** If a service cannot survive a reboot without manual intervention, it is not deployed, it is merely running. Test restarts regularly, on purpose.
+
+**Logs you can actually read.** Structured, timestamped, and shipped somewhere that survives the host dying. The worst time to set up log shipping is during an incident.
+
+**Backups you have restored from.** A backup that has never been restored is a hope, not a backup. Schedule restore drills the way you schedule maintenance.
+
+**One obvious place for state.** When something breaks at 3 AM, you should not have to remember which of five machines holds the data that matters.
+
+**Alerts that mean something.** Every alert should correspond to an action. If the correct response to an alert is to ignore it, delete the alert.
+
+None of these require expensive tooling. All of them require deciding, in advance, to take the boring option.

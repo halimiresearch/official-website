@@ -1,0 +1,23 @@
+---
+title: "Notes on evaluating AI agents before trusting them"
+date: "2026-01-22"
+description: "AI agents are easy to demo and hard to trust. Some practical notes on how we evaluate agent behavior before putting it anywhere near production."
+tags: ["ai", "evaluation"]
+---
+
+The gap between a convincing AI agent demo and a trustworthy AI agent is enormous, and most of it lives in the failure modes you did not test.
+
+## Demo success is not evidence
+
+An agent that completes a task nine times out of ten looks identical in a demo to one that completes it ten times out of ten. The difference only appears in logs, over time, under adversarial or simply weird inputs.
+
+Our working rule: an agent earns autonomy gradually. Read-only first, then reversible writes, then scoped irreversible actions, each gate backed by evaluation runs rather than vibes.
+
+## What we measure
+
+- Task completion rate across a fixed, version-controlled scenario suite.
+- Behavior under malformed, contradictory, or adversarial instructions.
+- Tool-use discipline: does it call only what it should, with arguments it can justify?
+- Degradation behavior: when the model is uncertain, does it ask, guess, or fabricate?
+
+None of this is novel. It is the same discipline we apply to any unreliable dependency. The novelty is only in remembering that the model is one.
